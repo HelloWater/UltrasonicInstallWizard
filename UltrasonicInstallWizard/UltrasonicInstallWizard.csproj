@@ -103,6 +103,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Page_Progress.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Page_Sys_Env.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -115,6 +119,9 @@
   <ItemGroup>
     <Compile Include="Page_InstallPath.xaml.cs">
       <DependentUpon>Page_InstallPath.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page_Progress.xaml.cs">
+      <DependentUpon>Page_Progress.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page_Sys_Env.xaml.cs">
       <DependentUpon>Page_Sys_Env.xaml</DependentUpon>
