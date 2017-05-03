@@ -1,0 +1,57 @@
+﻿<base:BasePage x:Class="UltrasonicInstallWizard.Page_Version"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:base="clr-namespace:UltrasonicInstallWizard"
+      xmlns:component="clr-namespace:UltrasonicInstallWizard.Components"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,10,2">
+            <base:ImageButtonUC x:Name="m_btnMinimize" Height="30" Width="30" MyImage="/Images/minimize.png"
+                                ClickEvent="btnMinimize_ClickEvent"/>
+            <base:ImageButtonUC x:Name="m_btnClose" Height="30" Width="30" MyImage="/Images/close.png" 
+                                 ClickEvent="btnClose_ClickEvent"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" Width="228" Height="228" BorderBrush="LightBlue" BorderThickness="10" CornerRadius="114" Margin="36,47,36,175" Background="White">
+                <Image Width="200" Height="200" Source="/Images/iconinfo.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Border>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Width="400" Height="300">
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Source="Images/iconwarning.png" Width="20" Height="20"/>
+                    <TextBlock FontSize="18" Foreground="White" Text="当前版本V1.0" VerticalAlignment="Center" Margin="6"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Source="Images/iconright.png" Width="20" Height="20"/>
+                    <TextBlock FontSize="18" Foreground="White" Text="最新版本V2.0.1" VerticalAlignment="Center" Margin="6"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Source="Images/iconinfo.png" Width="20" Height="20"/>
+                    <TextBlock FontSize="18" Foreground="White" Text="新增CW、3D/4D功能" VerticalAlignment="Center" Margin="6"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Source="Images/iconinfo.png" Width="20" Height="20"/>
+                    <TextBlock FontSize="18" Foreground="White" Text="优化血流成像" VerticalAlignment="Center" Margin="6"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="2">
+            <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="更新" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>
+        </Grid>
+    </Grid>
+</base:BasePage>
