@@ -1,0 +1,31 @@
+﻿<base:BasePage x:Class="UltrasonicInstallWizard.PageWelcome"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:base ="clr-namespace:UltrasonicInstallWizard"  
+      xmlns:component="clr-namespace:UltrasonicInstallWizard.Components"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="450"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,2,10,2">
+            <base:ImageButtonUC x:Name="m_btnMinimize" Height="30" Width="30" MyImage="/Images/minimize.png"
+                                ClickEvent="btnMinimize_ClickEvent"/>
+            <base:ImageButtonUC x:Name="m_btnClose" Height="30" Width="30" MyImage="/Images/close.png" 
+                                 ClickEvent="btnClose_ClickEvent"/>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Text="Medical Ultrasound Solution" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
+        <Grid Grid.Row="2">
+            <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="安装" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>
+        </Grid>
+    </Grid>
+</base:BasePage>

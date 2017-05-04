@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-//using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,15 +15,14 @@ using System.Windows.Shapes;
 namespace UltrasonicInstallWizard
 {
     /// <summary>
-    /// Interaction logic for Page_Version.xaml
+    /// Interaction logic for PageWelcome.xaml
     /// </summary>
-    public partial class Page_Version : BasePage
+    public partial class PageWelcome : BasePage
     {
-        public Page_Version()
+        public PageWelcome()
         {
             InitializeComponent();
         }
-
         private void btnMinimize_ClickEvent(object sender, MouseButtonEventArgs e)
         {
             ParentWindow.WindowState = WindowState.Minimized;
@@ -38,7 +36,7 @@ namespace UltrasonicInstallWizard
         private void btnNextStep_ClickEvent(object sender, MouseButtonEventArgs e)
         {
             //MessageBox.Show("Next Step");
-            ParentWindow.NavigationCall("Page_InstallPath"); //navigate
+            ParentWindow.NavigationCall("Page_Sys_Env"); //navigate
         }
     }
 }

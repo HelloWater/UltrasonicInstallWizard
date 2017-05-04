@@ -33,16 +33,16 @@
             </Border>
             <StackPanel Grid.Column="1" Orientation="Vertical" Width="400" Height="300">
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="Images/iconright.png" Width="20" Height="20"/>
-                    <TextBlock FontSize="18" Foreground="White" Text="已安装VS2013_Redist" VerticalAlignment="Center" Margin="6"/>
+                    <Image Name="m_accessicon" Source="Images/loading.gif" Width="20" Height="20"/>
+                    <TextBlock Name="m_accesstext" FontSize="18" Foreground="White" Text="Access Runtime_2013_x64" VerticalAlignment="Center" Margin="6"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="Images/iconwarning.png" Width="20" Height="20"/>
-                    <TextBlock FontSize="18" Foreground="White" Text="硬件驱动异常" VerticalAlignment="Center" Margin="6"/>
+                    <Image Name="m_vs2010icon" Source="Images/loading.gif" Width="20" Height="20"/>
+                    <TextBlock Name="m_vs2010text" FontSize="18" Foreground="White" Text="Microsoft Visual C++ 2010 x64 Runtime" VerticalAlignment="Center" Margin="6"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="Images/loading.gif" Width="20" Height="20"/>
-                    <TextBlock FontSize="18" Foreground="White" Text="正在安装Access Runtime_2013_x64" VerticalAlignment="Center" Margin="6"/>
+                    <Image Name="m_vs2013icon" Source="Images/iconwarning.png" Width="20" Height="20"/>
+                    <TextBlock Name="m_vs2013text" FontSize="18" Foreground="White" Text="Microsoft Visual C++ 2013 x64 Runtime" VerticalAlignment="Center" Margin="6"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
