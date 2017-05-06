@@ -24,6 +24,7 @@ namespace UltrasonicInstallWizard
         private bool m_bAccessInstalled = false;
         private bool m_bVS2010Installed = false;
         private bool m_bVS2013Installed = false;
+
         public Page_Sys_Env()
         {
             InitializeComponent();

@@ -24,8 +24,8 @@
                                  ClickEvent="btnClose_ClickEvent"/>
         </StackPanel>
         <Border Grid.Row="1" Grid.Column="0" Width="228" Height="228" BorderBrush="LightBlue" BorderThickness="10" CornerRadius="114" Margin="36,47,36,175" Background="White">
-            <!--<Image Width="200" Height="200" Source="/Images/iconright.png" HorizontalAlignment="Center" VerticalAlignment="Center" />-->
-            <TextBlock Name="m_sProgress" HorizontalAlignment="Center" VerticalAlignment="Center" Text="10%" FontSize="22" Foreground="SkyBlue"/>
+            <Image Name="stateIcon" Width="200" Height="200" Source="/Images/loading.gif" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <!--<TextBlock Name="m_sProgress" HorizontalAlignment="Center" VerticalAlignment="Center" Text="10%" FontSize="22" Foreground="SkyBlue"/>-->
         </Border>
         <Grid Grid.Row="2">
             <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="完成" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>

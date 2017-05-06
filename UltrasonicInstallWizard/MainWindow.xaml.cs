@@ -21,6 +21,13 @@ namespace UltrasonicInstallWizard
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool m_IfUpdate; 
+        public bool IfUpdate 
+        {
+            set { m_IfUpdate = value; }
+            get { return m_IfUpdate; } 
+        } 
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +45,7 @@ namespace UltrasonicInstallWizard
             {
                 object obj = type.Assembly.CreateInstance(uri);
                 UserControl control = obj as UserControl;
-                this.MainFrame.Content = control;
+
                 PropertyInfo[] infos = type.GetProperties();
                 foreach (PropertyInfo info in infos)
                 {
@@ -48,6 +55,8 @@ namespace UltrasonicInstallWizard
                         break;
                     }
                 }
+
+                this.MainFrame.Content = control;
             }
         }
 

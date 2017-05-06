@@ -30,7 +30,7 @@
             <Border Grid.Column="0" Width="228" Height="228" BorderBrush="LightBlue" BorderThickness="10" CornerRadius="114" Margin="36,47,36,175" Background="White">
                 <Image Width="180" Height="170" Source="/Images/folder.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
             </Border>
-            <StackPanel Grid.Column="1" Orientation="Vertical" Width="450" Height="200">
+            <!--<StackPanel Grid.Column="1" Orientation="Vertical" Width="450" Height="200">
                 <StackPanel Orientation="Horizontal" Height="50">
                     <TextBlock FontSize="18" Foreground="White" Text="程序安装路径：" VerticalAlignment="Center" Margin="6"/>
                     <TextBox Name="m_InstallPath" FontSize="16" Width="230" Height="30" Text="D:/Bin"/>
@@ -41,10 +41,11 @@
                     <TextBox Name="m_DatasavePath" FontSize="16" Width="230" Height="30" Text="D:/Data"/>
                     <component:SampleButtonUC x:Name="m_btnDatasavePath" Width="40" Height="30" Text="更改" TextFontSize="16" ClickEvent="btnDatasavePath" Margin="6"/>
                 </StackPanel>
-            </StackPanel>
+            </StackPanel>-->
+            <TextBlock Grid.Column="1" Name="m_Info" Text="正在检测磁盘..." FontSize="28" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="48.427,78.163,263.352,334.88"/>
         </Grid>
         <Grid Grid.Row="2">
-            <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="安装" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>
+            <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="下一步" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>
         </Grid>
     </Grid>
 </base:BasePage>

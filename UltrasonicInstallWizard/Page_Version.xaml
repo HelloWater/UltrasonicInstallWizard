@@ -33,25 +33,37 @@
             </Border>
             <StackPanel Grid.Column="1" Orientation="Vertical" Width="400" Height="300">
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="Images/iconwarning.png" Width="20" Height="20"/>
-                    <TextBlock FontSize="18" Foreground="White" Text="当前版本V1.0" VerticalAlignment="Center" Margin="6"/>
+                    <Image Name="iconOldVersion" Width="20" Height="20"/>
+                    <TextBlock Name="textOldVersion" FontSize="18" Foreground="White" Text="" VerticalAlignment="Center" Margin="6"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="Images/iconright.png" Width="20" Height="20"/>
-                    <TextBlock FontSize="18" Foreground="White" Text="最新版本V2.0.1" VerticalAlignment="Center" Margin="6"/>
+                    <Image Name="iconNewVersion" Source="/Images/iconright.png" Width="20" Height="20"/>
+                    <TextBlock Name="textNewVersion" FontSize="18" Foreground="White" Text="" VerticalAlignment="Center" Margin="6"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="Images/iconinfo.png" Width="20" Height="20"/>
-                    <TextBlock FontSize="18" Foreground="White" Text="新增CW、3D/4D功能" VerticalAlignment="Center" Margin="6"/>
+                    <Image Name="iconUpdate1" Width="20" Height="20"/>
+                    <TextBlock Name="textUpdate1" FontSize="18" Foreground="White" Text="" VerticalAlignment="Center" Margin="6"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Height="30">
-                    <Image Source="Images/iconinfo.png" Width="20" Height="20"/>
-                    <TextBlock FontSize="18" Foreground="White" Text="优化血流成像" VerticalAlignment="Center" Margin="6"/>
+                    <Image Name="iconUpdate2"  Width="20" Height="20"/>
+                    <TextBlock Name="textUpdate2" FontSize="18" Foreground="White" Text="" VerticalAlignment="Center" Margin="6"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Name="iconUpdate3"  Width="20" Height="20"/>
+                    <TextBlock Name="textUpdate3" FontSize="18" Foreground="White" Text="" VerticalAlignment="Center" Margin="6"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Name="iconUpdate4"  Width="20" Height="20"/>
+                    <TextBlock Name="textUpdate4" FontSize="18" Foreground="White" Text="" VerticalAlignment="Center" Margin="6"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="30">
+                    <Image Name="iconUpdate5"  Width="20" Height="20"/>
+                    <TextBlock Name="textUpdate5" FontSize="18" Foreground="White" Text="" VerticalAlignment="Center" Margin="6"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2">
-            <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="更新" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>
+            <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="下一步" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>
         </Grid>
     </Grid>
 </base:BasePage>

@@ -39,41 +39,43 @@ namespace UltrasonicInstallWizard
         private void btnNextStep_ClickEvent(object sender, MouseButtonEventArgs e)
         {
             //MessageBox.Show("Next Step");
+
             ParentWindow.NavigationCall("Page_Progress"); //navigate
         }
-        private void btnInstallPath(object sender, MouseButtonEventArgs e)
-        {
-            //文件选择
-//             var openFileDialog = new Microsoft.Win32.OpenFileDialog()
-//             {
-//                 Filter = "Excel Files(*.sql)|*.sql"
-//             };
-//             var result = openFileDialog.ShowDialog();
-//             if(result == true)
-//             {
-//                 this.m_InstallPath.Text = openFileDialog.FileName;
-//             }
 
-            //文件夹选择
-            FolderBrowserDialog m_Dialog = new FolderBrowserDialog();
-            DialogResult result = m_Dialog.ShowDialog();
-            if(result == System.Windows.Forms.DialogResult.Cancel)
-            {
-                return;
-            }
-            string m_Dir = m_Dialog.SelectedPath.Trim();
-            this.m_InstallPath.Text = m_Dir;
-        }
-        private void btnDatasavePath(object sender,MouseButtonEventArgs e)
-        {
-            FolderBrowserDialog m_Dialog = new FolderBrowserDialog();
-            DialogResult result = m_Dialog.ShowDialog();
-            if(result == System.Windows.Forms.DialogResult.Cancel)
-            {
-                return;
-            }
-            string m_Dir = m_Dialog.SelectedPath.Trim();
-            this.m_DatasavePath.Text = m_Dir;
-        }
+//         private void btnInstallPath(object sender, MouseButtonEventArgs e)
+//         {
+//             //文件选择
+// //             var openFileDialog = new Microsoft.Win32.OpenFileDialog()
+// //             {
+// //                 Filter = "Excel Files(*.sql)|*.sql"
+// //             };
+// //             var result = openFileDialog.ShowDialog();
+// //             if(result == true)
+// //             {
+// //                 this.m_InstallPath.Text = openFileDialog.FileName;
+// //             }
+// 
+//             //文件夹选择
+//             FolderBrowserDialog m_Dialog = new FolderBrowserDialog();
+//             DialogResult result = m_Dialog.ShowDialog();
+//             if(result == System.Windows.Forms.DialogResult.Cancel)
+//             {
+//                 return;
+//             }
+//             string m_Dir = m_Dialog.SelectedPath.Trim();
+//             this.m_InstallPath.Text = m_Dir;
+//         }
+//         private void btnDatasavePath(object sender,MouseButtonEventArgs e)
+//         {
+//             FolderBrowserDialog m_Dialog = new FolderBrowserDialog();
+//             DialogResult result = m_Dialog.ShowDialog();
+//             if(result == System.Windows.Forms.DialogResult.Cancel)
+//             {
+//                 return;
+//             }
+//             string m_Dir = m_Dialog.SelectedPath.Trim();
+//             this.m_DatasavePath.Text = m_Dir;
+//         }
     }
 }
