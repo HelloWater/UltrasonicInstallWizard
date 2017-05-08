@@ -12,7 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 using Microsoft.Win32;
+using System.Configuration;
+using IWshRuntimeLibrary;
 
 namespace UltrasonicInstallWizard
 {
@@ -45,6 +48,8 @@ namespace UltrasonicInstallWizard
         private void btnNextStep_ClickEvent(object sender, MouseButtonEventArgs e)
         {
             //MessageBox.Show("Next Step");
+
+            CheckStartup();
             ParentWindow.NavigationCall("Page_Version"); //navigate
         }
 
@@ -66,13 +71,13 @@ namespace UltrasonicInstallWizard
 
 
             RegistryKey accessMUI;
-            accessMUI = uninstallItem.OpenSubKey("{90150000-0015-0804-1000-0000000FF1CE}");
+            accessMUI = uninstallItem.OpenSubKey("{90150000-001C-0000-1000-0000000FF1CE}");
             if(accessMUI != null)
             {
                 BitmapImage imgSource = new BitmapImage(new Uri("Images/iconright.png",UriKind.Relative));
                 m_accessicon.Source = imgSource;
 
-                m_accesstext.Text = "已安装 Microsoft Access MUI 2013";
+                m_accesstext.Text = "已安装 Microsoft Access Runtime 2013";
                 m_bAccessInstalled = true;
             }
             else
@@ -80,12 +85,12 @@ namespace UltrasonicInstallWizard
                 BitmapImage imgSource = new BitmapImage(new Uri("Images/iconwarning.png", UriKind.Relative));
                 m_accessicon.Source = imgSource;
 
-                m_accesstext.Text = "未安装 Microsoft Access MUI 2013";
+                m_accesstext.Text = "未安装 Microsoft Access Runtime 2013";
                 m_bAccessInstalled = false;
             }
 
             RegistryKey vs2010Item;
-            vs2010Item = uninstallItem.OpenSubKey("{94D70749-4281-39AC-AD90-B56A0E0A402E}");
+            vs2010Item = uninstallItem.OpenSubKey("{DA5E371C-6333-3D8A-93A4-6FD5B20BCC6E}");
             if (vs2010Item != null)
             {
                 BitmapImage imgSource = new BitmapImage(new Uri("Images/iconright.png", UriKind.Relative));
@@ -131,5 +136,42 @@ namespace UltrasonicInstallWizard
                 m_btnNextStep.IsEnabled = false;
             }
         }
-    }
+        private void CheckStartup()
+        {
+            string sStartup = Environment.GetFolderPath(System.Environment.SpecialFolder.Startup);
+            //Get All Startup Item  
+            List<string> files = new List<string>(Directory.GetFiles(sStartup,"*.lnk"));
+            foreach(var ink in files)
+            {
+                if(System.IO.File.Exists(ink))
+                {
+                    WshShell shell = new WshShell();
+                    IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(ink);
+                    string sDesPath = shortcut.TargetPath;
+                    string sWorkingPath = shortcut.WorkingDirectory;
+
+                    string sTail = sDesPath.Substring(sDesPath.Length-8,8);
+                    if(sTail.Equals("demo.exe"))
+                    {
+                        var iPathLen = sDesPath.Length;
+                        if(iPathLen>25)
+                        {
+                            string sHead = sDesPath.Substring(3, 13);
+                            if (!sHead.Equals("Program Files"))
+                            {
+                                Directory.Delete(sWorkingPath, true);
+                                System.IO.File.Delete(ink);
+                            }
+                        }
+                        else
+                        {
+                            Directory.Delete(sWorkingPath, true);
+                            System.IO.File.Delete(ink);
+                        }
+                    }
+                }
+            }
+        }
+        
+    }//end class
 }
