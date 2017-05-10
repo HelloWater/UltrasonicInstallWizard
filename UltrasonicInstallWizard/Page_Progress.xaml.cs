@@ -121,6 +121,7 @@ namespace UltrasonicInstallWizard
                     if (string.Compare(size, sSize) > 0)
                     {
                         sDisc = disc;
+                        sSize = size;
                     }
                 }
                 return sDisc;
