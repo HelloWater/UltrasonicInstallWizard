@@ -84,22 +84,24 @@ namespace UltrasonicInstallWizard
             string sCurPath = "";
             string sDesDisk = "";
 
-            if(ParentWindow.IfUpdate)
-            {
-                
-            }
-            else //Install
-            {
-                sCurPath = System.Environment.CurrentDirectory;
+//             if(ParentWindow.IfUpdate)
+//             {
+//                 
+//             }
+//             else //Install
+//             {
+//                 
+//             }
 
-                sDesDisk = CheckDisk();
-                sDesDisk += "\\Data";
-                if (Directory.Exists(sCurPath + "\\Data"))
-                {
-                    MoveFolder(sCurPath + "\\Data", sDesDisk);
-                    Directory.Delete(sCurPath + "\\Data", true);
-                }
-            }
+            sCurPath = System.Environment.CurrentDirectory;
+
+            sDesDisk = CheckDisk();
+            sDesDisk += "\\Data";
+            if (Directory.Exists(sCurPath + "\\Data"))
+            {
+                MoveFolder(sCurPath + "\\Data", sDesDisk, false);
+                Directory.Delete(sCurPath + "\\Data", true);
+            } 
 
             stateIcon.Source = new BitmapImage(new Uri("pack://application:,,,/Images/iconright.png"));
             
@@ -114,14 +116,20 @@ namespace UltrasonicInstallWizard
                 ManagementObjectSearcher searcher = new ManagementObjectSearcher("Select * From Win32_LogicalDisk");
                 string sDisc = ""; //盘符
                 string sSize = "";
+                
                 foreach (ManagementObject mo in searcher.Get())
                 {
                     string disc = mo["Name"].ToString().Trim();
                     string size = mo["Size"].ToString().Trim();
-                    if (string.Compare(size, sSize) > 0)
+                    string DriveType = mo["DriveType"].ToString().Trim();
+      
+                    if(string.Compare(DriveType,"3") == 0)
                     {
-                        sDisc = disc;
-                        sSize = size;
+                        if (string.Compare(size, sSize) > 0)
+                        {
+                            sDisc = disc;
+                            sSize = size;
+                        }
                     }
                 }
                 return sDisc;
@@ -136,7 +144,8 @@ namespace UltrasonicInstallWizard
         /// </summary>
         /// <param name="sourcePath"></param>
         /// <param name="destPath"></param>
-        public static void MoveFolder(string sourcePath, string destPath)
+        /// <param name="a_bIfReplace">是否替换</param>
+        public static void MoveFolder(string sourcePath, string destPath, bool a_bIfReplace)
         {
             if (Directory.Exists(sourcePath))
             {
@@ -157,12 +166,26 @@ namespace UltrasonicInstallWizard
                 files.ForEach(c =>
                 {
                     string destFile = System.IO.Path.Combine(destPath, System.IO.Path.GetFileName(c));
-                    //覆盖模式  
+                    //如果目标文件已存在
                     if (File.Exists(destFile))
                     {
-                        File.Delete(destFile);
+                        //替换
+                        if(a_bIfReplace)
+                        {
+                            File.Delete(destFile);
+                            File.Move(c, destFile);
+                        }
+                        else
+                        {
+                            //不替换
+                        }
+                        
+                        
                     }
-                    File.Move(c, destFile);
+                    else //如果目标文件不存在
+                    {
+                        File.Move(c, destFile);
+                    }
                 });
                 //获得源文件下所有目录文件  
                 List<string> folders = new List<string>(Directory.GetDirectories(sourcePath));
@@ -174,7 +197,7 @@ namespace UltrasonicInstallWizard
                     //Directory.Move(c, destDir);  
 
                     //采用递归的方法实现  
-                    MoveFolder(c, destDir);
+                    MoveFolder(c, destDir,a_bIfReplace);
                 });
             }
             else
@@ -189,17 +212,59 @@ namespace UltrasonicInstallWizard
             machinelocalItem = Registry.LocalMachine;
             softwareItem = machinelocalItem.OpenSubKey("SOFTWARE",true);
 
-            RegistryKey shawayItem = softwareItem.OpenSubKey("Shaway");
+            RegistryKey shawayItem = softwareItem.OpenSubKey("Shaway",true);
             if (shawayItem == null)
             {
-                shawayItem = softwareItem.CreateSubKey("Shaway");
+                shawayItem = softwareItem.CreateSubKey("Shaway"); 
             }
-           
             string sNewVersion = ConfigurationManager.AppSettings["NewVersion"];
 
             shawayItem.SetValue("ProgramFile", programfile);
             shawayItem.SetValue("DataPath", datapath);
-            shawayItem.SetValue("Version",sNewVersion);
+            shawayItem.SetValue("Version", sNewVersion);
+
+            AddRegedit(programfile,sNewVersion);
+        }
+        /// <summary>
+        /// 注册应用程序
+        /// </summary>
+        /// <param name="setupPath"></param>
+        private void AddRegedit(string setupPath, string version)
+        {
+            try
+            {
+                RegistryKey key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall",true);
+                RegistryKey software = key.CreateSubKey("Shaway");
+                // 图标
+                software.SetValue("DisplayIcon", setupPath + "\\UltrasonicInstallWizard.exe");
+
+                // 显示名
+                software.SetValue("DisplayName", "Ultrasound");
+
+                // 版本
+                software.SetValue("DisplayVersion", version);
+
+                // 程序发行公司
+                software.SetValue("Publisher", "shaway");
+
+                // 安装位置
+                software.SetValue("InstallLocation", setupPath);
+
+                // 安装源
+                software.SetValue("InstallSource", setupPath);
+
+                // 帮助电话
+                // software.SetValue("HelpTelephone", "123456789");
+
+                // 卸载路径
+                software.SetValue("UninstallString", setupPath + "/uninstallUS.exe");
+                software.Close();
+                key.Close();
+            }
+            catch(Exception)
+            {
+
+            }
         }
     }
 }

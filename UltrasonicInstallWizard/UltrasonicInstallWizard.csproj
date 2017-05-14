@@ -220,6 +220,20 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\progress_1.png" />
+    <Resource Include="Images\progress_10.png" />
+    <Resource Include="Images\progress_11.png" />
+    <Resource Include="Images\progress_12.png" />
+    <Resource Include="Images\progress_2.png" />
+    <Resource Include="Images\progress_3.png" />
+    <Resource Include="Images\progress_4.png" />
+    <Resource Include="Images\progress_5.png" />
+    <Resource Include="Images\progress_6.png" />
+    <Resource Include="Images\progress_7.png" />
+    <Resource Include="Images\progress_8.png" />
+    <Resource Include="Images\progress_9.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

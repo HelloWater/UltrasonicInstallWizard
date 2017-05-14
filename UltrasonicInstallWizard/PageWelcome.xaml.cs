@@ -36,6 +36,7 @@ namespace UltrasonicInstallWizard
         private void btnNextStep_ClickEvent(object sender, MouseButtonEventArgs e)
         {
             //MessageBox.Show("Next Step");
+
             ParentWindow.NavigationCall("Page_Sys_Env"); //navigate
         }
     }

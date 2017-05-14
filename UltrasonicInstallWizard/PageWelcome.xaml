@@ -25,7 +25,7 @@
         </StackPanel>
         <TextBlock Grid.Row="1" Text="Medical Ultrasound Solution" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36"/>
         <Grid Grid.Row="2">
-            <component:SampleButtonUC x:Name="m_btnNextStep" Width="200" Height="50" IsEnabled="True" Text="安装" TextFontSize="16" ClickEvent="btnNextStep_ClickEvent"/>
+            <component:SampleButtonUC x:Name="m_btnNextStep" Width="100" Height="40" IsEnabled="True" Text="  安  装  " TextFontSize="22" ClickEvent="btnNextStep_ClickEvent"/>
         </Grid>
     </Grid>
 </base:BasePage>
