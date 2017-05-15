@@ -223,13 +223,13 @@ namespace UltrasonicInstallWizard
             shawayItem.SetValue("DataPath", datapath);
             shawayItem.SetValue("Version", sNewVersion);
 
-            AddRegedit(programfile,sNewVersion);
+            AddRegedit(programfile, datapath, sNewVersion);
         }
         /// <summary>
         /// 注册应用程序
         /// </summary>
         /// <param name="setupPath"></param>
-        private void AddRegedit(string setupPath, string version)
+        private void AddRegedit(string setupPath, string datapath, string version)
         {
             try
             {
@@ -257,7 +257,7 @@ namespace UltrasonicInstallWizard
                 // software.SetValue("HelpTelephone", "123456789");
 
                 // 卸载路径
-                software.SetValue("UninstallString", setupPath + "/uninstallUS.exe");
+                software.SetValue("UninstallString", datapath + "\\uninstallUS.exe");
                 software.Close();
                 key.Close();
             }
